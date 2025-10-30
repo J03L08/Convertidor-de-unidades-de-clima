@@ -40,3 +40,9 @@ form.addEventListener('input', () => {
   const outputTemp = convertTemp(inputTemp, fromUnit, toUnit);
   outputField.value = (Math.round(outputTemp * 100) / 100) + ' ' + toUnit.toUpperCase();
 });
+
+const outValue = document.getElementById('outputValue');
+const outUnit  = document.getElementById('outputUnit');
+
+outValue.textContent = numeroFormateado;
+outUnit.textContent  = unidad;

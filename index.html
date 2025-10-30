@@ -3,22 +3,23 @@
   <head>
     <link rel="stylesheet" href="converter.css">
     <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#ffffff">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2" />
-    <title>Temperature converter</title>
+    <title>Convertidor de Temperatura</title>
   </head>
   <body>
     <form id="converter">
-  <label for="input-temp">temperature</label>
+  <label for="input-temp">Temperatura</label>
   <input type="text" id="input-temp" name="input-temp" value="20" />
-  <label for="input-unit">from</label>
+  <label for="input-unit">De</label>
   <select id="input-unit" name="input-unit">
     <option value="c" selected>Celsius</option>
     <option value="f">Fahrenheit</option>
     <option value="k">Kelvin</option>
   </select>
-  <label for="output-unit">to</label>
+  <label for="output-unit">A</label>
   <select id="output-unit" name="output-unit">
     <option value="c">Celsius</option>
     <option value="f" selected>Fahrenheit</option>
@@ -28,9 +29,15 @@
 </form>
 <script src="converter.js"></script>
 <script>
-if('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js', { scope: '/' });
-}
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', async () => {
+      try {
+        const reg = await navigator.serviceWorker.register('./sw.js', { scope: './' });
+      } catch (e) {
+        console.error('Fallo al registrar SW', e);
+      }
+    });
+  }
 </script>
   </body>
 </html>
