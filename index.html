@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
   <head>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <meta name="theme-color" content="#0ea5e9">
     <link rel="stylesheet" href="converter.css">
-    <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#ffffff">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -10,34 +13,48 @@
     <title>Convertidor de Temperatura</title>
   </head>
   <body>
-    <form id="converter">
-  <label for="input-temp">Temperatura</label>
-  <input type="text" id="input-temp" name="input-temp" value="20" />
-  <label for="input-unit">De</label>
-  <select id="input-unit" name="input-unit">
-    <option value="c" selected>Celsius</option>
-    <option value="f">Fahrenheit</option>
-    <option value="k">Kelvin</option>
-  </select>
-  <label for="output-unit">A</label>
-  <select id="output-unit" name="output-unit">
-    <option value="c">Celsius</option>
-    <option value="f" selected>Fahrenheit</option>
-    <option value="k">Kelvin</option>
-  </select>
-  <output name="output-temp" id="output-temp" for="input-temp input-unit output-unit">68 F</output>
-</form>
-<script src="converter.js"></script>
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', async () => {
-      try {
-        const reg = await navigator.serviceWorker.register('./sw.js', { scope: './' });
-      } catch (e) {
-        console.error('Fallo al registrar SW', e);
-      }
-    });
-  }
-</script>
-  </body>
+  <main class="container">
+    <!-- HERO -->
+    <section id="hero" class="card">
+      <img class="hero-logo" src="icons/icon-512.png" alt="Icono de la app" width="96" height="96">
+      <h1>Convertidor de Clima</h1>
+      <p class="hero-sub">Bienvenido. Deja tu comentario (demo, no funcional):</p>
+
+      <form class="hero-form">
+        <label for="comentario">Comentario</label>
+        <textarea id="comentario" rows="3"></textarea>
+        <button type="button" disabled>Enviar (demo)</button>
+      </form>
+    </section>
+
+    <!-- CONVERTIDOR -->
+    <form id="converter" class="card">
+      <label for="input-temp">Temperatura</label>
+      <input type="text" id="input-temp" name="input-temp" value="20" />
+      <label for="input-unit">De</label>
+      <select id="input-unit" name="input-unit">
+        <option value="c" selected>Celsius</option>
+        <option value="f">Fahrenheit</option>
+        <option value="k">Kelvin</option>
+      </select>
+      <label for="output-unit">A</label>
+      <select id="output-unit" name="output-unit">
+        <option value="c">Celsius</option>
+        <option value="f" selected>Fahrenheit</option>
+        <option value="k">Kelvin</option>
+      </select>
+      <output name="output-temp" id="output-temp" for="input-temp input-unit output-unit">68 F</output>
+    </form>
+  </main>
+
+  <script src="converter.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', async () => {
+        try { await navigator.serviceWorker.register('./sw.js', { scope: './' }); }
+        catch (e) { console.error('Fallo al registrar SW', e); }
+      });
+    }
+  </script>
+</body>
 </html>

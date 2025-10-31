@@ -1,17 +1,12 @@
 {
-    "lang": "en-us",
-    "name": "Temperature converter app",
-    "short_name": "Temperature converter",
-    "description": "A basic temperature converter application that can convert to and from Celsius, Kelvin, and Fahrenheit",
-    "start_url": "/",
-    "background_color": "#ffffff",
-    "theme_color": "#000000",
-    "orientation": "any",
-    "display": "standalone",
-    "icons": [
-        {
-            "src": "/icon512.png",
-            "sizes": "512x512"
-        }
-    ]
+  "name": "Convertidor de Clima",
+  "short_name": "Clima",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0ea5e9",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
 }
